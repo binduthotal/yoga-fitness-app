@@ -4,10 +4,10 @@ import MainContainer from "./MainContainer";
 
 const Home = () => {
     return (
-        <div>
-            <Header />
-            <MainContainer />
-        </div>
+      <div className="bg-[#96b9be] w-full h-screen">
+        <Header />
+        <MainContainer />
+      </div>
     );
 };
 

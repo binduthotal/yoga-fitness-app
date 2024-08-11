@@ -7,17 +7,16 @@
 -   Git remote
 -   React router dom - npm i react-router-dom
 -   Tailwind CSS - npm install -D tailwindcss 
-
-- Home Page
-- Header
--   Start
--   About
--   Positions
--   Breathing
--   Contact
+-   Install React-three-fiber library for 3D model - npm install three @react-three/fiber
 
 ## Start Page
--   Main Container
+- Header
+-       Start
+-       About
+-       Positions
+-       Breathing
+-       Contact
+-  Main Container
 -       Gemini Ai Search Bar
 -       Backgroung Image and Description
 -       3d Image
