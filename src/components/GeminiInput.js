@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { model } from "../utils/geminiModel";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addGeminiResults } from "../reduxStore/geminiResultSlice";
 
 const GeminiInput = () => {
@@ -8,16 +8,10 @@ const GeminiInput = () => {
   const [level, setLevel] = useState("Beginner");
   const dispatch = useDispatch();
 
-  const handlePrompt = async (e) => {
-    e.preventDefault();
-    // const prompt =
-    //   "Act as a yoga and fitness instructor and suggest some yoga asana names based on the query : " +
-    //   input.current.value +
-    //   "for" +
-    //   level +
-    //   "give only 5 movie names, comma seperated";
+  const handlePrompt = async () => {
 
-    const prompt = `Based on the query: "${input.current.value}" for the level: "${level}",
+    if (input.current.value) {
+      const prompt = `Based on the query: "${input.current.value}" for the level: "${level}",
     - provide only 7 recommendations. 
     - If the query is about yoga, list 5 yoga asanas. 
     - If the query is about diet, list 5 diet foods. 
@@ -32,12 +26,19 @@ const GeminiInput = () => {
     - 'howToDo': Instructions on how to incorporate the food into a weight loss plan.
     Ensure the response is relevant to the type of query.Do not use delimiters.`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-    
-    const yogaNames = JSON.parse(text);
-    dispatch(addGeminiResults(yogaNames));
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+
+      const yogaNames = JSON.parse(text);
+      dispatch(addGeminiResults(yogaNames));
+    }
+  };
+
+  const clearInput = (e) => {
+    if (input.current) {
+      input.current.value = "";
+    }
   };
 
   return (
@@ -46,21 +47,30 @@ const GeminiInput = () => {
         Yoga with Gemini AI
       </h1>
 
-      <div
-        onSubmit={handlePrompt}
-        className="bg-white p-8 shadow-md rounded-lg "
-      >
+      <div className="bg-white p-8 shadow-md rounded-lg ">
         <p className="text-sm text-gray-400 font-sans mb-2">
           Type your concern here like Yoga for Lower Back Pain, Digestive
           issues, Stress, Peace etc
         </p>
-        <form className="grid gap-3 sm:flex sm:items-center">
-          <input
-            ref={input}
-            className="sm:w-10/12 py-3 px-4 mr-2 border border-gray-400 rounded-lg text-lg font-semibold"
-            type="text"
-            placeholder="Start Yoga"
-          />
+        <form
+          className="grid gap-3 sm:flex sm:items-center"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <div className="flex items-baseline sm:w-10/12 px-4  mr-2 border border-gray-400 rounded-lg">
+            <input
+              ref={input}
+              className=" text-lg font-semibold w-full py-2 focus:outline-none"
+              type="text"
+              placeholder="Start Yoga"
+            />
+            <button
+              className="text-black font-bold text-xl hover:bg-gray-400 hover:text-white p-3 rounded-full"
+              onClick={clearInput}
+            >
+              X
+            </button>
+          </div>
+
           <select
             className="sm:w-min py-3 px-4 mr-2 border border-gray-400 rounded-lg text-lg font-semibold"
             onChange={(e) => {
@@ -71,7 +81,10 @@ const GeminiInput = () => {
             <option value="Intermediate">Intermediate</option>
             <option value="Advanced">Advanced</option>
           </select>
-          <button className="sm:w-2/12 py-3 px-4 text-white bg-[#4f6366] rounded-lg font-semibold text-lg">
+          <button
+            className="sm:w-2/12 py-3 px-4 text-white bg-[#4f6366] rounded-lg font-semibold text-lg"
+            onClick={handlePrompt}
+          >
             Go
           </button>
         </form>

@@ -52,4 +52,18 @@ export const pranayamaSteps = [
 ];
 
 export const GEMINI_API_KEY = process.env.REACT_APP_GEMINIAPI;
+
 export const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
+export const FIREBASE_AUTH_DOMAIN = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+export const FIREBASE_PROJECTID = process.env.REACT_APP_FIREBASE_PROJECTID;
+export const FIREBASE_STORAGE_BUCKET =
+  process.env.REACT_APP_FIREBASE_STORAGE_BUCKET;
+export const FIREBASE_MESSAGING_SENDER_ID =
+  process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID;
+export const FIREBASE_APP_ID = process.env.REACT_APP_FIREBASE_APP_ID;
+
+// authDomain: "yogawithgemini-10627.firebaseapp.com",
+//   projectId: "yogawithgemini-10627",
+//   storageBucket: "yogawithgemini-10627.appspot.com",
+//   messagingSenderId: "1027565596669",
+//   appId: "1:1027565596669:web:e46979d9862d6e1449f394",
