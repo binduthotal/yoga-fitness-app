@@ -18,7 +18,7 @@ const GeminiInput = () => {
     //   "give only 5 movie names, comma seperated";
 
     const prompt = `Based on the query: "${input.current.value}" for the level: "${level}",
-    - provide only 5 recommendations. 
+    - provide only 7 recommendations. 
     - If the query is about yoga, list 5 yoga asanas. 
     - If the query is about diet, list 5 diet foods. 
     - For yoga queries, each response should be json file with array of objects include:
@@ -35,7 +35,6 @@ const GeminiInput = () => {
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
-    console.log(text);
     
     const yogaNames = JSON.parse(text);
     dispatch(addGeminiResults(yogaNames));

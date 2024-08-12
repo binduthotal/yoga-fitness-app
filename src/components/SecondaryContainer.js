@@ -13,8 +13,7 @@ const SecondaryContainer = () => {
 
   return (
     result && (
-      <div className=" bg-[#3CACAE] rounded-lg mt-10 mx-10 px-5 py-5  ">
-      {/* <div className=" bg-[#3CACAE] rounded-lg mt-20 mx-10 px-5 py-5 absolute top-80 "> */}
+      <div className=" bg-[#3CACAE] rounded-lg mt-10 lg:mx-10 px-5 py-5  ">
         <h1 className="text-xl font-semibold">Results: </h1>
         {result?.map((value) => {
           const pose = yogaPosesApi?.find(
