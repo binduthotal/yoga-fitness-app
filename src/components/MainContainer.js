@@ -1,10 +1,12 @@
 import React from "react";
-import GeminiInput from "./GeminiInput";
+import WarmUp from "./WarmUp";
 
 const MainContainer = () => {
+
+
   return (
-    <div className="w-full  mt-10">
-     <GeminiInput/>
+    <div className=" lg:absolute bg-[#C8F4F9] lg:bg-transparent w-full h-full lg:top-40 right-0">
+      <WarmUp />
     </div>
   );
 };
