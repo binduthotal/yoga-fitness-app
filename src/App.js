@@ -9,6 +9,7 @@ import DoYogaWithAi from "./components/DoYogaWithAi";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import ErrorComponent from "./components/ErrorComponent";
+import Footer from "./components/Footer";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -48,6 +49,7 @@ function App() {
       <RouterProvider router={appRouter}>
         <Header />
       </RouterProvider>
+      <Footer/>
     </Provider>
   );
 }
